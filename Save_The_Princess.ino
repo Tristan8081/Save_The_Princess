@@ -1,19 +1,53 @@
 //Save the Princess by Tristan S-M
 
 
-void setup() {
-  // put your setup code here, to run once:
-
-}
-
-void loop() {
-  // put your main code here, to run repeatedly:
-
-}
-
-void Drawlevel1()
+void setup() 
 {
-  DrawPx(0,2,Violet); //maze walls for the first level
+  // put your setup code here, to run once:
+  MeggyJrSimpleSetup();
+}
+
+void loop() 
+{
+  DrawPx (0,0,Red);    //Draw Player/Mario
+  DisplaySlate();     //Draw on screen
+  
+   //check to see if a button was pressed
+   CheckButtonsDown();
+    //If the righ arrow was pressed, add one to x.
+    if (Button_Right && ReadPx(x + 1, y) == 5 || ReadPx(x + 1, y) == 7 || ReadPx(x + 1, y) == 8 || ReadPx(x + 1, y) == 2)
+        {
+          x= x + 1;
+        }
+    //If the left arrow was pressed, take one away from x.
+    if (Button_Left && ReadPx(x - 1, y) == 5 || ReadPx(x - 1, y) == 7 || ReadPx(x - 1, y) == 8 || ReadPx(x - 1, y) == 2)
+        {
+          x= x - 1;
+        }
+     //If the up arrow was pressed, add one to y.
+     if (Button_Up && ReadPx(y + 1, x) == 5 || ReadPx(y + 1, x) == 7 || ReadPx(y + 1, x) == 8 || ReadPx(y + 1, x) == 2)
+        {
+          y= y + 1;
+        }
+      //If the down arrow was pressed, take one away from y.
+      if (Button_Down && ReadPx(y - 1, x) == 5 || ReadPx(y - 1, x) == 7 || ReadPx(y - 1, x) == 8 || ReadPx(y - 1, x) == 2)
+        {
+          y= y - 1;
+        }
+
+      if (y > 7)
+        y = 7;
+      if (y < 0)
+        y = 0;
+      if (x < 0)
+        x = 0;
+      if (x > 7)
+        x = 7;
+}
+
+void Drawlevel1()  //maze walls for the first level
+{
+  DrawPx(0,2,Violet); 
   DrawPx(0,3,Violet);
   DrawPx(0,4,Violet);
 
@@ -48,7 +82,7 @@ void Drawlevel1()
   DrawPx(7,0,Violet);
   DrawPx(7,1,Violet);
   DrawPx(7,3,Violet);
-  DrawPx(7,7,DimAqua); //dot that you eat to go to next level
+  DrawPx(7,7,White); //dot that you eat to go to next level
 
   DisplaySlate();
 }
@@ -80,7 +114,7 @@ DrawPx(5,6,16);
 DrawPx(6,4,16);
 DrawPx(6,5,16);
 
-DrawPx(2,7,DimAqua);//dot that you eat to the next level
+DrawPx(2,7,White);//dot that you eat to the next level
 
 DisplaySlate();
 }
@@ -119,7 +153,8 @@ DrawPx(6,5,Violet);
 DrawPx(7,1,Violet); //maze walls of level 3
 DrawPx(7,7,Violet);
 
-DrawPx(5,7,DimAqua);
+DrawPx(5,7,DimRed);
 
 DisplaySlate();
 }
+
