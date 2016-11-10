@@ -1,46 +1,23 @@
 //Save the Princess by Tristan S-M
 
+int level = 1;
 
 void setup() 
 {
-  // put your setup code here, to run once:
-  MeggyJrSimpleSetup();
+  
 }
 
 void loop() 
 { 
-  
-   //check to see if a button was pressed
-   CheckButtonsDown();
-    //If the righ arrow was pressed, add one to x.
-    if (Button_Right && ReadPx(x + 1, y) == 5 || ReadPx(x + 1, y) == 7 || ReadPx(x + 1, y) == 8 || ReadPx(x + 1, y) == 2)
-        {
-          x= x + 1;
-        }
-    //If the left arrow was pressed, take one away from x.
-    if (Button_Left && ReadPx(x - 1, y) == 5 || ReadPx(x - 1, y) == 7 || ReadPx(x - 1, y) == 8 || ReadPx(x - 1, y) == 2)
-        {
-          x= x - 1;
-        }
-     //If the up arrow was pressed, add one to y.
-     if (Button_Up && ReadPx(y + 1, x) == 5 || ReadPx(y + 1, x) == 7 || ReadPx(y + 1, x) == 8 || ReadPx(y + 1, x) == 2)
-        {
-          y= y + 1;
-        }
-      //If the down arrow was pressed, take one away from y.
-      if (Button_Down && ReadPx(y - 1, x) == 5 || ReadPx(y - 1, x) == 7 || ReadPx(y - 1, x) == 8 || ReadPx(y - 1, x) == 2)
-        {
-          y= y - 1;
-        }
-
-      if (y > 7)
-        y = 7;
-      if (y < 0)
-        y = 0;
-      if (x < 0)
-        x = 0;
-      if (x > 7)
-        x = 7;
+  if (level == 1)
+    Drawlevel1();
+  if (level == 2)
+    DrawLevel2();
+  if (level == 3)
+    DrawLevel3();
+  if (level == Boss)
+    DrawBossLevel();
+    
 }
 
 
@@ -49,7 +26,8 @@ void loop()
 void Drawlevel1()  //maze walls for the first level
 {
 
-  DrawPx (0,0,Red);    //Draw Player/Mario
+  DrawPx (0,0,1);    //Draw Player/Mario
+
   
   DrawPx(0,2,6); //maze walls for the first level
   DrawPx(0,3,6);
@@ -94,7 +72,7 @@ void Drawlevel1()  //maze walls for the first level
 void Drawlevel2() //draws the second level to the game slate
 {
 
-  DrawPx(4,0,Red);    //Mario/Player
+  DrawPx(4,0,1);    //Mario/Player
   
   DrawPx(1,7,6); //maze walls of level 2
   DrawPx(1,0,6);
@@ -131,12 +109,13 @@ void Drawlevel2() //draws the second level to the game slate
   DrawPx(7,7,7);  //dot that you eat to the next level
 
   DisplaySlate();
+  
 }
 
-void Drawlevel3() //draws the second level to the game slate
+void Drawlevel3() //draws the third level to the game slate
 {
 
-  DrawPx(0,2,Red);    //Mario/Player
+  DrawPx(0,2,1);    //Mario/Player
 
   DrawPx(0,0,6); //maze walls of level 3
   DrawPx(0,5,6);
@@ -172,5 +151,47 @@ void Drawlevel3() //draws the second level to the game slate
   DrawPx(5,7,8);
 
   DisplaySlate();
+  
 }
+
+void BossLevel()  //Draws Boss Level of the Game
+
+
+
+void updateMario()
+{
+  //check to see if a button was pressed
+   CheckButtonsDown();
+    //If the righ arrow was pressed, add one to x.
+    if (Button_Right && ReadPx(x + 1, y) == 5 || ReadPx(x + 1, y) == 7 || ReadPx(x + 1, y) == 8 || ReadPx(x + 1, y) == 2)
+        {
+          x= x + 1;
+        }
+    //If the left arrow was pressed, take one away from x.
+    if (Button_Left && ReadPx(x - 1, y) == 5 || ReadPx(x - 1, y) == 7 || ReadPx(x - 1, y) == 8 || ReadPx(x - 1, y) == 2)
+        {
+          x= x - 1;
+        }
+     //If the up arrow was pressed, add one to y.
+     if (Button_Up && ReadPx(y + 1, x) == 5 || ReadPx(y + 1, x) == 7 || ReadPx(y + 1, x) == 8 || ReadPx(y + 1, x) == 2)
+        {
+          y= y + 1;
+        }
+      //If the down arrow was pressed, take one away from y.
+      if (Button_Down && ReadPx(y - 1, x) == 5 || ReadPx(y - 1, x) == 7 || ReadPx(y - 1, x) == 8 || ReadPx(y - 1, x) == 2)
+        {
+          y= y - 1;
+        }
+
+      if (y > 7)
+        y = 7;
+      if (y < 0)
+        y = 0;
+      if (x < 0)
+        x = 0;
+      if (x > 7)
+        x = 7;
+
+}
+
 
