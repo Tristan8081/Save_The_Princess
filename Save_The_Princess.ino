@@ -1,22 +1,30 @@
 //Save the Princess by Tristan S-M
 
 int level = 1;
+int level = 2;
+int level = 3;
+int level = Boss;
+
 
 void setup() 
 {
-  
+  Serial.begin(9600)i
 }
 
 void loop() 
 { 
   if (level == 1)
     Drawlevel1();
+    updateMario();
   if (level == 2)
     DrawLevel2();
+    updateMario()
   if (level == 3)
     DrawLevel3();
+    updateMario()
   if (level == Boss)
     DrawBossLevel();
+    updateMario()
     
 }
 
@@ -25,7 +33,8 @@ void loop()
 
 void Drawlevel1()  //maze walls for the first level
 {
-
+  Serial.print("function called")
+  
   DrawPx (0,0,1);    //Draw Player/Mario
 
   
@@ -155,7 +164,9 @@ void Drawlevel3() //draws the third level to the game slate
 }
 
 void BossLevel()  //Draws Boss Level of the Game
-
+{
+  
+}
 
 
 void updateMario()
@@ -193,5 +204,7 @@ void updateMario()
         x = 7;
 
 }
+
+void gameOverScreen()         //GameOver sign
 
 
