@@ -36,7 +36,7 @@ void loop()
     DrawBossLevel();   
   
   updateMario();
-  
+  updateMinion();
 }
 
 
@@ -141,7 +141,7 @@ void Drawlevel2() //draws the second level to the game slate
 void Drawlevel3() //draws the third level to the game slate
 {
 
-  DrawPx(1,0,6); //maze walls of level 3
+  DrawPx(1,0,6);  //maze walls of level 3
   DrawPx(0,5,6);
   DrawPx(1,3,6);
   DrawPx(1,6,6);
@@ -197,22 +197,22 @@ void updateMario()
   //check to see if a button was pressed
    CheckButtonsDown();
     //If the righ arrow was pressed, add one to x.
-    if (Button_Right && ReadPx(x + 1, y) == 5 || ReadPx(x + 1, y) == 7 || ReadPx(x + 1, y) == 8 || ReadPx(x + 1, y) == 2)
+    if (Button_Right && ReadPx(x + 1, y) == 5 || ReadPx(x + 1, y) == 7 || ReadPx(x + 1, y) == 8 || ReadPx(x + 1, y) == 2 || ReadPx(x + 1, y) == 4)
         {
           x= x + 1;
         }
     //If the left arrow was pressed, take one away from x.
-    if (Button_Left && ReadPx(x - 1, y) == 5 || ReadPx(x - 1, y) == 7 || ReadPx(x - 1, y) == 8 || ReadPx(x - 1, y) == 2)
+    if (Button_Left && ReadPx(x - 1, y) == 5 || ReadPx(x - 1, y) == 7 || ReadPx(x - 1, y) == 8 || ReadPx(x - 1, y) == 2 || ReadPx(x - 1, y) == 4)
         {
           x= x - 1;
         }
      //If the up arrow was pressed, add one to y.
-     if (Button_Up && ReadPx(y + 1, x) == 5 || ReadPx(y + 1, x) == 7 || ReadPx(y + 1, x) == 8 || ReadPx(y + 1, x) == 2)
+     if (Button_Up && ReadPx(y + 1, x) == 5 || ReadPx(y + 1, x) == 7 || ReadPx(y + 1, x) == 8 || ReadPx(y + 1, x) == 2 || ReadPx(y + 1, x) == 4)
         {
           y= y + 1;
         }
       //If the down arrow was pressed, take one away from y.
-      if (Button_Down && ReadPx(y - 1, x) == 5 || ReadPx(y - 1, x) == 7 || ReadPx(y - 1, x) == 8 || ReadPx(y - 1, x) == 2)
+      if (Button_Down && ReadPx(y - 1, x) == 5 || ReadPx(y - 1, x) == 7 || ReadPx(y - 1, x) == 8 || ReadPx(y - 1, x) == 2 || ReadPx(y - 1, x) == 4)
         {
           y= y - 1;
         }
@@ -226,6 +226,12 @@ void updateMario()
       if (x > 7)
         x = 7;
 
+}
+
+void updateMinion()
+
+{
+  
 }
 
 void gameOverScreen()         //GameOver sign
