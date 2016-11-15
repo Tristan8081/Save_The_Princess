@@ -33,8 +33,8 @@ void loop()
     DrawLevel3();
 
   if (level == Boss)
-    DrawBossLevel();
-    
+    DrawBossLevel();   
+  
   updateMario();
   
 }
@@ -46,7 +46,6 @@ void Drawlevel1()  //maze walls for the first level
 {
   Serial.print("function called")
   
-  DrawPx (0,0,1);    //Draw Player/Mario
 
   
   DrawPx(0,2,6); //maze walls for the first level
@@ -95,7 +94,6 @@ void Drawlevel1()  //maze walls for the first level
 void Drawlevel2() //draws the second level to the game slate
 {
 
-  DrawPx(4,0,1);    //Mario/Player
   
   DrawPx(1,7,6); //maze walls of level 2
   DrawPx(1,0,6);
@@ -129,10 +127,10 @@ void Drawlevel2() //draws the second level to the game slate
   DrawPx(6,3,6);
   DrawPx(6,2,5);    //Hiding Spot
 
-  DrawPx(0,1,2);    //Teleport
-  DrawPx(0,2,2);
-  DrawPx(3,7,2);
-  DrawPx(3,3,2);
+  DrawPx(0,4,4);    //Teleport
+  DrawPx(0,2,4);
+  DrawPx(3,7,4);
+  DrawPx(3,3,4);
 
   DrawPx(7,7,7);  //dot that you eat to the next level
 
@@ -143,9 +141,7 @@ void Drawlevel2() //draws the second level to the game slate
 void Drawlevel3() //draws the third level to the game slate
 {
 
-  DrawPx(0,2,1);    //Mario/Player
-
-  DrawPx(0,0,6); //maze walls of level 3
+  DrawPx(1,0,6); //maze walls of level 3
   DrawPx(0,5,6);
   DrawPx(1,3,6);
   DrawPx(1,6,6);
@@ -178,11 +174,11 @@ void Drawlevel3() //draws the third level to the game slate
 
   DrawPx(5,7,8);
 
-  DrawPx(1,0,2);
-  DrawPx(1,6,2);
-  DrawPx(2,6,2);
-  DrawPx(4,2,2);
-  DrawPx(5,5,2);
+  DrawPx(1,1,4);
+  DrawPx(1,6,4);
+  DrawPx(2,6,4);
+  DrawPx(4,2,4);
+  DrawPx(5,5,4);
   
 
   DisplaySlate();
@@ -197,6 +193,7 @@ void BossLevel()  //Draws Boss Level of the Game
 
 void updateMario()
 {
+  DrawPx(0,0,1)
   //check to see if a button was pressed
    CheckButtonsDown();
     //If the righ arrow was pressed, add one to x.
