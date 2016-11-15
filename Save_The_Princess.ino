@@ -4,6 +4,16 @@ int level = 1;
 int level = 2;
 int level = 3;
 int level = Boss;
+int teleport = 1.1;
+int teleport = 1.2;
+int teleport = 1.3;
+int teleport = 1.4;
+int teleport = 2.1;
+int teleport = 2.2;
+int teleport = 2.3;
+int teleport = 2.4;
+int teleport = 2.5;
+
 
 
 void setup() 
@@ -15,17 +25,18 @@ void loop()
 { 
   if (level == 1)
     Drawlevel1();
-    updateMario();
+
   if (level == 2)
     DrawLevel2();
-    updateMario()
+
   if (level == 3)
     DrawLevel3();
-    updateMario()
+
   if (level == Boss)
     DrawBossLevel();
-    updateMario()
     
+  updateMario();
+  
 }
 
 
@@ -75,6 +86,9 @@ void Drawlevel1()  //maze walls for the first level
   DrawPx(7,3,6);
   DrawPx(7,7,7); //dot that you eat to go to next level
 
+  
+
+
   DisplaySlate();
 }
 
@@ -114,6 +128,11 @@ void Drawlevel2() //draws the second level to the game slate
   DrawPx(6,5,6);
   DrawPx(6,3,6);
   DrawPx(6,2,5);    //Hiding Spot
+
+  DrawPx(0,1,2);    //Teleport
+  DrawPx(0,2,2);
+  DrawPx(3,7,2);
+  DrawPx(3,3,2);
 
   DrawPx(7,7,7);  //dot that you eat to the next level
 
@@ -158,6 +177,13 @@ void Drawlevel3() //draws the third level to the game slate
   DrawPx(7,7,6);
 
   DrawPx(5,7,8);
+
+  DrawPx(1,0,2);
+  DrawPx(1,6,2);
+  DrawPx(2,6,2);
+  DrawPx(4,2,2);
+  DrawPx(5,5,2);
+  
 
   DisplaySlate();
   
