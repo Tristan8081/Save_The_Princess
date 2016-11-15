@@ -3,7 +3,6 @@
 int level = 1;
 int level = 2;
 int level = 3;
-int level = Boss;
 int teleport = 1.1;
 int teleport = 1.2;
 int teleport = 1.3;
@@ -14,7 +13,10 @@ int teleport = 2.3;
 int teleport = 2.4;
 int teleport = 2.5;
 
+int Xmario = 0;
+int Ymario = 0;
 
+boolean gameOver = false;
 
 void setup() 
 {
@@ -23,20 +25,32 @@ void setup()
 
 void loop() 
 { 
-  if (level == 1)
-    Drawlevel1();
+  if (gameOver == false)
+  {
+    if (level == 1)
+    {
+      Drawlevel1();
+    }
+    if (level == 2)
+    {
+      DrawLevel2();
+    }
+    if (level == 3)
+    {
+      DrawLevel3();
+    }
 
-  if (level == 2)
-    DrawLevel2();
+    updateMario();
+    updateMinion();
 
-  if (level == 3)
-    DrawLevel3();
+    if (collide())
+    {
+      Tone_Start(50000000,100);
+      gameOver = true;
+    }
+  }
 
-  if (level == Boss)
-    DrawBossLevel();   
-  
-  updateMario();
-  updateMinion();
+  else gameOverScreen();
 }
 
 
@@ -187,16 +201,10 @@ void Drawlevel3() //draws the third level to the game slate
   
 }
 
-void BossLevel()  //Draws Boss Level of the Game
-
-{
-  
-}
-
 
 void updateMario()
 {
-  DrawPx(0,0,1);
+  DrawPx(Xmario,Ymario,Red);
   //check to see if a button was pressed
    CheckButtonsDown();
     //If the righ arrow was pressed, add one to x.
@@ -231,6 +239,7 @@ void updateMario()
 
 }
 
+void drawMinion()
 void updateMinion()
 
 {
@@ -242,6 +251,36 @@ void updateMinion2()
 {
   
 }
+
+boolean collide()
+
+{
+  if (Xmario.x == 
+}
+
+void drawmario();
+{
+  DrawPx(Xmario,Ymario,Red);
+}
 void gameOverScreen()         //GameOver sign
 
+{
+  DrawPx(0,0,4White);
+  DrawPx(1,1,White);
+  DrawPx(2,2,White);
+  DrawPx(3,3,White);
+  DrawPx(4,4,White);
+  DrawPx(5,5,White);
+  DrawPx(6,6,White);
+  DrawPx(7,7,White);
+  DrawPx(0,7,White);
+  DrawPx(1,6,White);
+  DrawPx(2,5,White);
+  DrawPx(3,4,White);
+  DrawPx(4,3,White);
+  DrawPx(5,2,White);
+  DrawPx(6,1,White);
+  DrawPx(7,0,White);
+  DisplaySlate();
+}
 
