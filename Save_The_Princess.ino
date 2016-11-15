@@ -85,7 +85,7 @@ void Drawlevel1()  //maze walls for the first level
   DrawPx(7,3,6);
   DrawPx(7,7,7); //dot that you eat to go to next level
 
-  
+  updateMinion2();  
 
 
   DisplaySlate();
@@ -164,11 +164,13 @@ void Drawlevel3() //draws the third level to the game slate
 
   DrawPx(5,0,6);
   DrawPx(5,2,6);
+  DrawPx(5,3,5);
   DrawPx(5,1,6);
   DrawPx(5,4,6);
   DrawPx(5,6,6);
   
   DrawPx(6,5,6);
+  DrawPx(6,4,5);
   DrawPx(7,1,6); 
   DrawPx(7,7,6);
 
@@ -186,6 +188,7 @@ void Drawlevel3() //draws the third level to the game slate
 }
 
 void BossLevel()  //Draws Boss Level of the Game
+
 {
   
 }
@@ -193,7 +196,7 @@ void BossLevel()  //Draws Boss Level of the Game
 
 void updateMario()
 {
-  DrawPx(0,0,1)
+  DrawPx(0,0,1);
   //check to see if a button was pressed
    CheckButtonsDown();
     //If the righ arrow was pressed, add one to x.
@@ -234,6 +237,11 @@ void updateMinion()
   
 }
 
+void updateMinion2()
+
+{
+  
+}
 void gameOverScreen()         //GameOver sign
 
 
