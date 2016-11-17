@@ -11,9 +11,6 @@ int teleport = 1.4;
 
 int Xmario = 0;
 int Ymario = 0;
-int minion1 = {4,3};
-int minion2 = {7,1};
-int minion3 = {7,4};
 
 
 struct point
@@ -22,6 +19,9 @@ struct point
   int y;
   int direction;
 }
+point minion1 = {4,3};
+point minion2 = {7,1};
+point minion3 = {7,4};
 
 
 boolean gameOver = false;
