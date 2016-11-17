@@ -333,7 +333,23 @@ void updateminion3()
 boolean collide()
 
 {
-  if (Xmario.x == 
+  if (Xmario.x == minion1.x && Ymario.y == minion1.y)
+  {
+    return true;
+  }
+  else
+  {
+    return false;     //If no collision, return false.
+  }
+  if (Xmario.x == minion2.x && Ymario.y == minion2.y)
+  {
+    return true;
+  }
+  else
+  {
+    return false;     //If no collision, return false.
+  }
+  if (Xmario.x == minion3.x && Ymario.y == minion2.y)
   {
     return true;
   }
