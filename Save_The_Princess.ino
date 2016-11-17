@@ -11,6 +11,13 @@ int teleport = 1.4;
 
 int Xmario = 0;
 int Ymario = 0;
+int Xminion1 = 4;
+int Yminion1 = 3;
+int Xminion2 = 7;
+int Yminion2 = 1;
+int Xminion3 = 7;
+int Yminion3 = 4;
+
 
 boolean gameOver = false;
 
@@ -242,6 +249,11 @@ void drawtelportation()
 }
 
 void drawMinion()
+{
+  DrawPx(Xminion1,Yminion1,DimOrange)
+  DrawPx(Xminion2,Yminion2,DimOrange)
+  DrawPx(Xminion3,Yminion3,DimOrange)
+}
 
 void updateMinion()
 
@@ -259,7 +271,16 @@ boolean collide()
 
 {
   if (Xmario.x == 
+  {
+    return true;
+  }
+  else
+  {
+    return false;     //If no collision, return false.
+  }
 }
+
+
 
 void drawmario();
 {
