@@ -258,9 +258,9 @@ void drawtelportation()
 
 void drawMinion()
 {
-  DrawPx(Xminion1,Yminion1,DimOrange);
-  DrawPx(Xminion2,Yminion2,DimOrange);
-  DrawPx(Xminion3,Yminion3,DimOrange);
+  DrawPx(minion1.x,minion1.y,DimOrange);
+  DrawPx(minion2.x,minion2.y,DimOrange);
+  DrawPx(minion3.x,minion3.y,DimOrange);
 }
 
 void updateminion1()
