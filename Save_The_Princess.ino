@@ -1,17 +1,10 @@
 //Save the Princess by Tristan S-M
 
 int level = 1;
-int level = 2;
-int level = 3;
 int teleport = 1.1;
 int teleport = 1.2;
 int teleport = 1.3;
 int teleport = 1.4;
-int teleport = 2.1;
-int teleport = 2.2;
-int teleport = 2.3;
-int teleport = 2.4;
-int teleport = 2.5;
 
 int Xmario = 0;
 int Ymario = 0;
@@ -30,14 +23,6 @@ void loop()
     if (level == 1)
     {
       Drawlevel1();
-    }
-    if (level == 2)
-    {
-      DrawLevel2();
-    }
-    if (level == 3)
-    {
-      DrawLevel3();
     }
 
     updateMario();
@@ -60,53 +45,6 @@ void Drawlevel1()  //maze walls for the first level
 {
   Serial.print("function called")
   
-
-  
-  DrawPx(0,2,6); //maze walls for the first level
-  DrawPx(0,3,6);
-  DrawPx(0,4,6);
-
-  DrawPx(1,0,6);
-  DrawPx(1,2,6);
-  DrawPx(1,6,6);
-
-  DrawPx(2,2,6);
-  DrawPx(2,4,5);     //Hiding spot
-  DrawPx(2,5,6); 
-
-  DrawPx(3,1,6);
-  DrawPx(3,2,6);
-  DrawPx(3,4,6);
-  DrawPx(3,5,6);
-  DrawPx(3,7,6);
- 
-  DrawPx(4,4,6);
-  DrawPx(4,5,5);     //Hiding spot
-  DrawPx(4,7,6); 
-
-  DrawPx(5,0,6);
-  DrawPx(5,1,6); 
-  DrawPx(5,3,6);
-  DrawPx(5,7,6);
-
-  DrawPx(6,3,6);
-  DrawPx(6,5,6);
-  DrawPx(6,6,6);
-  DrawPx(6,7,6); 
-  
-  DrawPx(7,0,6);
-  DrawPx(7,1,6);
-  DrawPx(7,3,6);
-  DrawPx(7,7,7); //dot that you eat to go to next level
-
-  updateMinion2();  
-
-
-  DisplaySlate();
-}
-
-void Drawlevel2() //draws the second level to the game slate
-{
 
   
   DrawPx(1,7,6); //maze walls of level 2
@@ -152,55 +90,6 @@ void Drawlevel2() //draws the second level to the game slate
   
 }
 
-void Drawlevel3() //draws the third level to the game slate
-{
-
-  DrawPx(1,0,6);  //maze walls of level 3
-  DrawPx(0,5,6);
-  DrawPx(1,3,6);
-  DrawPx(1,6,6);
-
-  DrawPx(2,0,6);
-  DrawPx(2,2,6);
-  DrawPx(2,3,6);
-  DrawPx(2,4,6); 
-  DrawPx(2,5,6);
-
-  DrawPx(3,1,6);
-  DrawPx(3,2,6);
-  DrawPx(3,5,6);
-  DrawPx(3,6,6);
-  DrawPx(3,7,6);
-
-  DrawPx(4,3,6);
-  DrawPx(4,4,6); 
-  DrawPx(4,7,6);
-
-  DrawPx(5,0,6);
-  DrawPx(5,2,6);
-  DrawPx(5,3,5);
-  DrawPx(5,1,6);
-  DrawPx(5,4,6);
-  DrawPx(5,6,6);
-  
-  DrawPx(6,5,6);
-  DrawPx(6,4,5);
-  DrawPx(7,1,6); 
-  DrawPx(7,7,6);
-
-  DrawPx(5,7,8);
-
-  DrawPx(1,1,4);
-  DrawPx(1,6,4);
-  DrawPx(2,6,4);
-  DrawPx(4,2,4);
-  DrawPx(5,5,4);
-  
-
-  DisplaySlate();
-  
-}
-
 
 void updateMario()
 {
@@ -239,14 +128,15 @@ void updateMario()
 
 }
 
-void drawMinion()
-void updateMinion()
+void drawtelportation()
 
 {
   
 }
 
-void updateMinion2()
+void drawMinion()
+
+void updateMinion()
 
 {
   
