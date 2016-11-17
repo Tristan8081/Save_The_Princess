@@ -11,12 +11,17 @@ int teleport = 1.4;
 
 int Xmario = 0;
 int Ymario = 0;
-int Xminion1 = 4;
-int Yminion1 = 3;
-int Xminion2 = 7;
-int Yminion2 = 1;
-int Xminion3 = 7;
-int Yminion3 = 4;
+int minion1 = {4,3};
+int minion2 = {7,1};
+int minion3 = {7,4};
+
+
+struct point
+{
+  int x;
+  int y;
+  int direction;
+}
 
 
 boolean gameOver = false;
@@ -24,6 +29,9 @@ boolean gameOver = false;
 void setup() 
 {
   Serial.begin(9600)i
+  minion1 direction = 0;
+  minion2 direction = 0;
+  minion3 direction = 0;
 }
 
 void loop() 
@@ -250,15 +258,70 @@ void drawtelportation()
 
 void drawMinion()
 {
-  DrawPx(Xminion1,Yminion1,DimOrange)
-  DrawPx(Xminion2,Yminion2,DimOrange)
-  DrawPx(Xminion3,Yminion3,DimOrange)
+  DrawPx(Xminion1,Yminion1,DimOrange);
+  DrawPx(Xminion2,Yminion2,DimOrange);
+  DrawPx(Xminion3,Yminion3,DimOrange);
 }
 
-void updateMinion()
-
+void updateminion1()
 {
+  if (minion1.direction == 0)
+  {
+    minion1.y = minion1.y + 1;
+  }
+  if (minion1.direction == 180)
+  {
+    minion1.y = minion1.y - 1;
+  }
+  if ((minion1.x = 4) && (minion1.y = 3))
+  {
+    direction = 0;
+  }
+  if ((minion1.x = 4) && (minion1.y = 5))
+  {
+    direction = 180;
+  }
   
+}
+
+void updateminion2()
+{
+  if (minion2.direction == 0)
+  {
+    minion2.y = minion2.y + 1;
+  }
+  if (minion2.direction == 180)
+  {
+    minion2.y = minion2.y - 1;
+  }
+  if ((minion2.x = 7) && (minion2.y = 1))
+  {
+    direction = 0;
+  }
+  if ((minion2.x = 7) && (minion.y = 3))
+  {
+    direction = 180;
+  }
+}
+
+void updateminion3()
+{
+  if (minion3.direction == 0)
+  {
+    minion3.y = minion3.y + 1;
+  }
+  if (minion3.direction == 180)
+  {
+    minion3.y = minion3.y - 1;
+  }
+  if ((minion3.x = 7) && (minion3.y = 4))
+  {
+    direction = 0;
+  }
+  if ((minion3.x = 7) && (minion3.y = 6))
+  {
+    direction = 180;
+  }
 }
 
 //void updateMinion2()
