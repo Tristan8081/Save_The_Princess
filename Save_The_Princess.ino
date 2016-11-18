@@ -51,9 +51,15 @@ void loop()
     //  DrawLevel3();
     }
 
+    drawmario();
+    drawMinion();
     updateMario();
-    updateMinion();
+    updateminion1();
+    updateminion2();
+    updateminion3();
+    
 
+    //Checks to see if mario/player collides with minions
     if (collide())
     {
       Tone_Start(50000000,100);
@@ -250,7 +256,7 @@ void updateMario()
 
 }
 
-void drawtelportation()
+//void drawtelportation()
 
 {
   
@@ -361,7 +367,7 @@ boolean collide()
 
 
 
-void drawmario();
+void drawmario()
 {
   DrawPx(Xmario,Ymario,Red);
 }
