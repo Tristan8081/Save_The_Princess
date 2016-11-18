@@ -8,7 +8,7 @@ int level = 1;
 
 int Xmario = 0;
 int Ymario = 0;
-
+boolean gameOver = false;
 
 struct point
 {
@@ -26,7 +26,7 @@ Point teleport2 = {1,6};
 Point teleport3 = {3,7};
 Point teleport4 = {3,1};
 
-boolean gameOver = false;
+
 
 void setup() 
 {
@@ -257,6 +257,7 @@ void updateMario()
 
 void drawtelportation()
 
+//Drawing teleportations
 {
   DrawPx(teleport1.x,teleport1.y,Green);
   DrawPx(teleport2.x,teleport2.y,Green);
@@ -266,7 +267,7 @@ void drawtelportation()
 }
 
 void purposeteleportation()
-
+//If player hits the teleportation, then it teleports to a different spot
 {
   if (Xmario.x == teleport1.x && Ymario.y == teleport1.y)
    {
@@ -291,6 +292,7 @@ void purposeteleportation()
 }
 
 void drawMinion()
+//Drawing minions
 {
   DrawPx(minion1.x,minion1.y,DimOrange);
   DrawPx(minion2.x,minion2.y,DimOrange);
@@ -298,6 +300,7 @@ void drawMinion()
 }
 
 void updateminion1()
+//Moving minions
 {
   if (minion1.direction == 0)
   {
@@ -365,7 +368,7 @@ void updateminion3()
 }
 
 boolean collide()
-
+//If collide with minions then it will go to gameover. 
 {
   if (Xmario.x == minion1.x && Ymario.y == minion1.y)
   {
@@ -396,6 +399,7 @@ boolean collide()
 
 
 void drawmario()
+//Drawing player/mario
 {
   DrawPx(Xmario,Ymario,Red);
 }
