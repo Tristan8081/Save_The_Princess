@@ -15,20 +15,22 @@ struct point
   int x;
   int y;
   int direction;
-}
-point minion1 = {4,3};
-point minion2 = {7,1};
-point minion3 = {7,4};
-point teleport1 = {0,7};
-point teleport2 = {1,6};
-point teleport3 = {3,7};
-point teleport4 = {3,1};
+};
+
+
+Point minion1 = {4,3};
+Point minion2 = {7,1};
+Point minion3 = {7,4};
+Point teleport1 = {0,7};
+Point teleport2 = {1,6};
+Point teleport3 = {3,7};
+Point teleport4 = {3,1};
 
 boolean gameOver = false;
 
 void setup() 
 {
-  Serial.begin(9600)i
+  
   minion1 direction = 0;
   minion2 direction = 0;
   minion3 direction = 0;
@@ -53,11 +55,12 @@ void loop()
 
     drawmario();
     drawMinion();
+    drawtelportation();
     updateMario();
     updateminion1();
     updateminion2();
     updateminion3();
-    
+    purposeteleportation();
 
     //Checks to see if mario/player collides with minions
     if (collide())
@@ -75,7 +78,7 @@ void loop()
 
 void Drawlevel1()  //maze walls for the first level
 {
-  Serial.print("function called")
+  
   
 
   DrawPx(1,7,6); //maze walls of level 1
@@ -260,6 +263,31 @@ void drawtelportation()
   DrawPx(teleport3.x,teleport3.y,Green);
   DrawPx(teleport4.x,teleport4.y,Green);
   
+}
+
+void purposeteleportation()
+
+{
+  if (Xmario.x == teleport1.x && Ymario.y == teleport1.y)
+   {
+     Xmario = 2;
+     Ymario = 0; 
+   }
+  if (Xmario.x == teleport2.x && Ymario.y == teleport2.y)
+   {
+     Xmario = 3;
+     Ymario = 3;
+   }
+  if (Xmario.x == teleport3.x && Ymario.y == teleport3.y)
+   {
+     Xmario = 5;
+     Ymario = 0;
+   }
+  if (Xmario.x == teleport4.x && Ymario.y == teleport4.y)
+   {
+     Xmario = 0;
+     Ymario = 3;
+   }
 }
 
 void drawMinion()
