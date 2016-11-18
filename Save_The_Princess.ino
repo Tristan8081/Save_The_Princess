@@ -3,10 +3,7 @@
 int level = 1;
 //int level = 2;
 //int level = 3;
-int teleport = 1.1;
-int teleport = 1.2;
-int teleport = 1.3;
-int teleport = 1.4;
+
 
 
 int Xmario = 0;
@@ -22,7 +19,10 @@ struct point
 point minion1 = {4,3};
 point minion2 = {7,1};
 point minion3 = {7,4};
-
+point teleport1 = {0,7};
+point teleport2 = {1,6};
+point teleport3 = {3,7};
+point teleport4 = {3,1};
 
 boolean gameOver = false;
 
@@ -110,10 +110,6 @@ void Drawlevel1()  //maze walls for the first level
   DrawPx(6,3,6);
   DrawPx(6,2,5);    //Hiding Spot
 
-  DrawPx(0,4,4);    //Teleport
-  DrawPx(0,2,4);
-  DrawPx(3,7,4);
-  DrawPx(3,3,4);
 
   DrawPx(7,7,7);  //dot that you eat to the next level
 
@@ -256,9 +252,13 @@ void updateMario()
 
 }
 
-//void drawtelportation()
+void drawtelportation()
 
 {
+  DrawPx(teleport1.x,teleport1.y,Green);
+  DrawPx(teleport2.x,teleport2.y,Green);
+  DrawPx(teleport3.x,teleport3.y,Green);
+  DrawPx(teleport4.x,teleport4.y,Green);
   
 }
 
