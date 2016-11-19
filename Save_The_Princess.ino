@@ -1,5 +1,5 @@
 //Save the Princess by Tristan S-M
-
+#include <MeggyJrSimple.h>   
 int level = 1;
 //int level = 2;
 //int level = 3;
@@ -10,7 +10,7 @@ int Xmario = 0;
 int Ymario = 0;
 boolean gameOver = false;
 
-struct point
+struct Point
 {
   int x;
   int y;
@@ -18,9 +18,9 @@ struct point
 };
 
 
-Point minion1 = {4,3};
-Point minion2 = {7,1};
-Point minion3 = {7,4};
+Point minion1 = {4,3,0};
+Point minion2 = {7,1,0};
+Point minion3 = {7,4,0};
 Point teleport1 = {0,7};
 Point teleport2 = {1,6};
 Point teleport3 = {3,7};
@@ -30,10 +30,7 @@ Point teleport4 = {3,1};
 
 void setup() 
 {
-  
-  minion1 direction = 0;
-  minion2 direction = 0;
-  minion3 direction = 0;
+  MeggyJrSimpleSetup();
 }
 
 void loop() 
@@ -53,7 +50,7 @@ void loop()
     //  DrawLevel3();
     }
 
-    drawmario();
+    drawMario1();
     drawMinion();
     drawtelportation();
     updateMario();
@@ -107,7 +104,7 @@ void Drawlevel1()  //maze walls for the first level
   DrawPx(5,5,6);
   DrawPx(5,6,6);
 
-  DrawPx(6,1,6)
+  DrawPx(6,1,6);
   DrawPx(6,4,6);
   DrawPx(6,5,6);
   DrawPx(6,3,6);
@@ -224,34 +221,34 @@ void updateMario()
   //check to see if a button was pressed
    CheckButtonsDown();
     //If the righ arrow was pressed, add one to x.
-    if (Button_Right && ReadPx(x + 1, y) == 5 || ReadPx(x + 1, y) == 7 || ReadPx(x + 1, y) == 8 || ReadPx(x + 1, y) == 2 || ReadPx(x + 1, y) == 4)
+    if (Button_Right && ReadPx(Xmario + 1, Ymario) == 5 || ReadPx(Xmario + 1, Ymario) == 7 || ReadPx(Xmario + 1, Ymario) == 8 || ReadPx(Xmario + 1, Ymario) == 2 || ReadPx(Xmario + 1, Ymario) == 4)
         {
-          x= x + 1;
+          Xmario = Xmario + 1;
         }
     //If the left arrow was pressed, take one away from x.
-    if (Button_Left && ReadPx(x - 1, y) == 5 || ReadPx(x - 1, y) == 7 || ReadPx(x - 1, y) == 8 || ReadPx(x - 1, y) == 2 || ReadPx(x - 1, y) == 4)
+    if (Button_Left && ReadPx(Xmario - 1, Ymario) == 5 || ReadPx(Xmario - 1, Ymario) == 7 || ReadPx(Xmario - 1, Ymario) == 8 || ReadPx(Xmario - 1, Ymario) == 2 || ReadPx(Xmario - 1, Ymario) == 4)
         {
-          x= x - 1;
+          Xmario = Xmario - 1;
         }
      //If the up arrow was pressed, add one to y.
-     if (Button_Up && ReadPx(y + 1, x) == 5 || ReadPx(y + 1, x) == 7 || ReadPx(y + 1, x) == 8 || ReadPx(y + 1, x) == 2 || ReadPx(y + 1, x) == 4)
+     if (Button_Up && ReadPx(Ymario + 1, Xmario) == 5 || ReadPx(Ymario + 1, Xmario) == 7 || ReadPx(Ymario + 1, Xmario) == 8 || ReadPx(Ymario + 1, Xmario) == 2 || ReadPx(Ymario + 1, Xmario) == 4)
         {
-          y= y + 1;
+          Ymario = Ymario + 1;
         }
       //If the down arrow was pressed, take one away from y.
-      if (Button_Down && ReadPx(y - 1, x) == 5 || ReadPx(y - 1, x) == 7 || ReadPx(y - 1, x) == 8 || ReadPx(y - 1, x) == 2 || ReadPx(y - 1, x) == 4)
+      if (Button_Down && ReadPx(Ymario - 1, Xmario) == 5 || ReadPx(Ymario - 1, Xmario) == 7 || ReadPx(Ymario - 1, Xmario) == 8 || ReadPx(Ymario - 1, Xmario) == 2 || ReadPx(Ymario - 1, Xmario) == 4)
         {
-          y= y - 1;
+          Ymario = Ymario - 1;
         }
 
-      if (y > 7)
-        y = 7;
-      if (y < 0)
-        y = 0;
-      if (x < 0)
-        x = 0;
-      if (x > 7)
-        x = 7;
+      if (Ymario > 7)
+        Ymario = 7;
+      if (Ymario < 0)
+        Ymario = 0;
+      if (Xmario < 0)
+        Xmario = 0;
+      if (Xmario > 7)
+        Xmario = 7;
 
 }
 
@@ -269,22 +266,22 @@ void drawtelportation()
 void purposeteleportation()
 //If player hits the teleportation, then it teleports to a different spot
 {
-  if (Xmario.x == teleport1.x && Ymario.y == teleport1.y)
+  if (Xmario == teleport1.x && Ymario == teleport1.y)
    {
      Xmario = 2;
      Ymario = 0; 
    }
-  if (Xmario.x == teleport2.x && Ymario.y == teleport2.y)
+  if (Xmario == teleport2.x && Ymario == teleport2.y)
    {
      Xmario = 3;
      Ymario = 3;
    }
-  if (Xmario.x == teleport3.x && Ymario.y == teleport3.y)
+  if (Xmario == teleport3.x && Ymario == teleport3.y)
    {
      Xmario = 5;
      Ymario = 0;
    }
-  if (Xmario.x == teleport4.x && Ymario.y == teleport4.y)
+  if (Xmario == teleport4.x && Ymario == teleport4.y)
    {
      Xmario = 0;
      Ymario = 3;
@@ -312,11 +309,11 @@ void updateminion1()
   }
   if ((minion1.x = 4) && (minion1.y = 3))
   {
-    direction = 0;
+    minion1.direction = 0;
   }
   if ((minion1.x = 4) && (minion1.y = 5))
   {
-    direction = 180;
+    minion1.direction = 180;
   }
   
 }
@@ -333,11 +330,11 @@ void updateminion2()
   }
   if ((minion2.x = 7) && (minion2.y = 1))
   {
-    direction = 0;
+    minion2.direction = 0;
   }
-  if ((minion2.x = 7) && (minion.y = 3))
+  if ((minion2.x = 7) && (minion2.y = 3))
   {
-    direction = 180;
+    minion2.direction = 180;
   }
 }
 
@@ -353,24 +350,24 @@ void updateminion3()
   }
   if ((minion3.x = 7) && (minion3.y = 4))
   {
-    direction = 0;
+    minion3.direction = 0;
   }
   if ((minion3.x = 7) && (minion3.y = 6))
   {
-    direction = 180;
+    minion3.direction = 180;
   }
 }
 
 //void updateMinion2()
 
-{
+
   
 }
 
 boolean collide()
 //If collide with minions then it will go to gameover. 
 {
-  if (Xmario.x == minion1.x && Ymario.y == minion1.y)
+  if (Xmario == minion1.x && Ymario == minion1.y)
   {
     return true;
   }
@@ -378,7 +375,7 @@ boolean collide()
   {
     return false;     //If no collision, return false.
   }
-  if (Xmario.x == minion2.x && Ymario.y == minion2.y)
+  if (Xmario == minion2.x && Ymario == minion2.y)
   {
     return true;
   }
@@ -386,7 +383,7 @@ boolean collide()
   {
     return false;     //If no collision, return false.
   }
-  if (Xmario.x == minion3.x && Ymario.y == minion2.y)
+  if (Xmario == minion3.x && Ymario == minion2.y)
   {
     return true;
   }
@@ -398,11 +395,12 @@ boolean collide()
 
 
 
-void drawmario()
-//Drawing player/mario
+void drawMario1()        //Drawing player/mario
 {
   DrawPx(Xmario,Ymario,Red);
 }
+
+
 void gameOverScreen()         //GameOver sign
 
 {
