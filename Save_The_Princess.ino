@@ -1,6 +1,6 @@
 //Save the Princess by Tristan S-M
 #include <MeggyJrSimple.h>   
-int level = 1;
+//int level = 1;
 //int level = 2;
 //int level = 3;
 
@@ -8,7 +8,7 @@ int level = 1;
 
 int Xmario = 0;
 int Ymario = 0;
-boolean gameOver = false;
+
 
 struct Point
 {
@@ -35,22 +35,10 @@ void setup()
 
 void loop() 
 { 
-  if (gameOver == false)
+  if (collide() == false)
   {
-    if (level == 1)
-    {
-      Drawlevel1();
-    }
-    //if (level == 2)
-    {
-    //  DrawLevel2();
-    }
-    //if (level == 3)
-    {
-    //  DrawLevel3();
-    }
-
-    drawMario1();
+    Drawlevel1();
+    drawMario();
     drawMinion();
     drawtelportation();
     updateMario();
@@ -58,16 +46,17 @@ void loop()
     updateminion2();
     updateminion3();
     purposeteleportation();
+    DisplaySlate();
+    ClearSlate();
+  } 
+    
 
     //Checks to see if mario/player collides with minions
-    if (collide())
+    else
     {
-      Tone_Start(50000000,100);
-      gameOver = true;
+      Tone_Start(50000,100);
+      gameOverScreen();
     }
-  }
-
-  else gameOverScreen();
 }
 
 
@@ -75,9 +64,6 @@ void loop()
 
 void Drawlevel1()  //maze walls for the first level
 {
-  
-  
-
   DrawPx(1,7,6); //maze walls of level 1
   DrawPx(1,0,6);
   DrawPx(1,1,6);
@@ -106,7 +92,7 @@ void Drawlevel1()  //maze walls for the first level
 
   DrawPx(6,1,6);
   DrawPx(6,4,6);
-  DrawPx(6,5,6);
+  DrawPx(6,5,5);    //Hiding Spot
   DrawPx(6,3,6);
   DrawPx(6,2,5);    //Hiding Spot
 
@@ -217,29 +203,31 @@ void Drawlevel1()  //maze walls for the first level
 
 void updateMario()
 {
-  DrawPx(Xmario,Ymario,Red);
+  
   //check to see if a button was pressed
    CheckButtonsDown();
     //If the righ arrow was pressed, add one to x.
-    if (Button_Right && ReadPx(Xmario + 1, Ymario) == 5 || ReadPx(Xmario + 1, Ymario) == 7 || ReadPx(Xmario + 1, Ymario) == 8 || ReadPx(Xmario + 1, Ymario) == 2 || ReadPx(Xmario + 1, Ymario) == 4)
+    if (Button_Right)
         {
           Xmario = Xmario + 1;
         }
     //If the left arrow was pressed, take one away from x.
-    if (Button_Left && ReadPx(Xmario - 1, Ymario) == 5 || ReadPx(Xmario - 1, Ymario) == 7 || ReadPx(Xmario - 1, Ymario) == 8 || ReadPx(Xmario - 1, Ymario) == 2 || ReadPx(Xmario - 1, Ymario) == 4)
+    if (Button_Left)
         {
           Xmario = Xmario - 1;
         }
      //If the up arrow was pressed, add one to y.
-     if (Button_Up && ReadPx(Ymario + 1, Xmario) == 5 || ReadPx(Ymario + 1, Xmario) == 7 || ReadPx(Ymario + 1, Xmario) == 8 || ReadPx(Ymario + 1, Xmario) == 2 || ReadPx(Ymario + 1, Xmario) == 4)
+     if (Button_Up)
         {
           Ymario = Ymario + 1;
         }
       //If the down arrow was pressed, take one away from y.
-      if (Button_Down && ReadPx(Ymario - 1, Xmario) == 5 || ReadPx(Ymario - 1, Xmario) == 7 || ReadPx(Ymario - 1, Xmario) == 8 || ReadPx(Ymario - 1, Xmario) == 2 || ReadPx(Ymario - 1, Xmario) == 4)
+      if (Button_Down)
         {
           Ymario = Ymario - 1;
         }
+       
+       
 
       if (Ymario > 7)
         Ymario = 7;
@@ -299,6 +287,10 @@ void drawMinion()
 void updateminion1()
 //Moving minions
 {
+   if ((minion1.x = 4) && (minion1.y = 3))
+  {
+    minion1.direction = 0;
+  }
   if (minion1.direction == 0)
   {
     minion1.y = minion1.y + 1;
@@ -307,39 +299,58 @@ void updateminion1()
   {
     minion1.y = minion1.y - 1;
   }
-  if ((minion1.x = 4) && (minion1.y = 3))
-  {
-    minion1.direction = 0;
-  }
+ 
   if ((minion1.x = 4) && (minion1.y = 5))
   {
     minion1.direction = 180;
   }
-  
+   if (minion1.y > 5)
+        minion1.y = 5;
+   if (minion1.y < 3)
+        minion1.y = 3;
+   if (minion1.x < 0)
+        minion1.x = 0;
+   if (minion1.x > 7)
+        minion1.x = 7;
 }
 
 void updateminion2()
 {
-  if (minion2.direction == 0)
-  {
-    minion2.y = minion2.y + 1;
-  }
-  if (minion2.direction == 180)
-  {
-    minion2.y = minion2.y - 1;
-  }
   if ((minion2.x = 7) && (minion2.y = 1))
   {
     minion2.direction = 0;
+  }
+  if (minion2.direction == 0)
+  {
+    minion2.y = minion2.y + 1;
   }
   if ((minion2.x = 7) && (minion2.y = 3))
   {
     minion2.direction = 180;
   }
+  
+  if (minion2.direction == 180)
+  {
+    minion2.y = minion2.y - 1;
+  }
+  
+
+   if (minion2.y > 3)
+        minion2.y = 3;
+   if (minion2.y < 1)
+        minion2.y = 1;
+   if (minion2.x < 0)
+        minion2.x = 0;
+   if (minion2.x > 7)
+        minion2.x = 7; 
 }
 
 void updateminion3()
 {
+  if ((minion3.x = 7) && (minion3.y = 4))
+  {
+    minion3.direction = 0;
+  }
   if (minion3.direction == 0)
   {
     minion3.y = minion3.y + 1;
@@ -348,21 +359,27 @@ void updateminion3()
   {
     minion3.y = minion3.y - 1;
   }
-  if ((minion3.x = 7) && (minion3.y = 4))
-  {
-    minion3.direction = 0;
-  }
+  
   if ((minion3.x = 7) && (minion3.y = 6))
   {
     minion3.direction = 180;
   }
+
+   if (minion3.y > 6)
+        minion3.y = 6;
+   if (minion3.y < 4)
+        minion3.y = 4;
+   if (minion3.x < 0)
+        minion3.x = 0;
+   if (minion3.x > 7)
+        minion3.x = 7;
 }
 
 //void updateMinion2()
 
 
   
-}
+
 
 boolean collide()
 //If collide with minions then it will go to gameover. 
@@ -393,18 +410,14 @@ boolean collide()
   }
 }
 
-
-
-void drawMario1()        //Drawing player/mario
+void drawMario()
 {
   DrawPx(Xmario,Ymario,Red);
 }
-
-
 void gameOverScreen()         //GameOver sign
 
 {
-  DrawPx(0,0,4White);
+  DrawPx(0,0,White);
   DrawPx(1,1,White);
   DrawPx(2,2,White);
   DrawPx(3,3,White);
